@@ -9,7 +9,7 @@ for current_dir, dirs, files in os.walk("main"):
         if name.endswith(".py"):
             if current_dir not in answer:
                 answer.append(current_dir)
-            continue
+            break
 
 with open("3_answer.txt", "w") as file:
     file.write("\n".join(sorted(answer)))
