@@ -5,7 +5,12 @@ from random import randint, choice
 
 
 class Enemy(Attacker):
-    pass
+
+    def set_answer(self, answer):
+        self._answer = answer
+
+    def check_answer(self, answer):
+        return str(answer).lower() == str(self._answer)
 
 
 def generate_random_enemy():
@@ -34,13 +39,8 @@ def factor(x):
 
 
 class Dragon(Enemy):
+
     _type = 'дракон' 
-
-    def set_answer(self, answer):
-        self.__answer = answer
-
-    def check_answer(self, answer):
-        return answer == str(self.__answer)
 
 
 class GreenDragon(Dragon):
@@ -86,13 +86,8 @@ class BlackDragon(Dragon):
 
 
 class Troll(Enemy):
+
     _type = 'тролль' 
-
-    def set_answer(self, answer):
-        self._answer = answer
-
-    def check_answer(self, answer):
-        return str(answer).lower() == str(self._answer)
 
 
 class GuessTroll(Troll):
