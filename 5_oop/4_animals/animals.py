@@ -32,30 +32,44 @@ class Dolphin(Mammal):
         super().__init__(name, age)
 
 
-class WingedMixin():
+class FlyerMixin():
 
     def fly(self):
         for wing in self.wings: wing.flap() 
 
 
-class Bat(Mammal, WingedMixin):
+class Bat(Mammal, FlyerMixin):
 
     def __init__(self, name, age):
         super().__init__(name, age)
         self.wings = [WebbedWing() for _ in range(2)]
 
 
-class Bird(Animal, WingedMixin):
+class Bird(Animal, FlyerMixin):
 
     def __init__(self, name, age):
         super().__init__(name, age)
         self.wings = [FeatheredWing() for _ in range(2)]
 
 
-class Insect(Animal, WingedMixin):
-    def __init__(self, name, age, wings_count=0):
+class Insect(Animal):
+
+    def __init__(self, name, age):
         super().__init__(name, age)
-        self.wings = [Wing() for _ in range(wings_count)]
+
+
+class Mosquito(Insect, FlyerMixin):
+
+    def __init__(self, name, age):
+        super().__init__(name, age)
+        self.wings = [Wing() for _ in range(2)]
+
+
+class Dragonfly(Insect, FlyerMixin):
+
+    def __init__(self, name, age):
+        super().__init__(name, age)
+        self.wings = [Wing() for _ in range(4)]
 
 
 if __name__ == "__main__":
@@ -65,5 +79,8 @@ if __name__ == "__main__":
     bat = Bat("SomeBat", 2)
     bat.fly()
 
-    insect = Insect("SomeBug", 1, 2)
-    insect.fly()
+    mosquito = Mosquito("Mosquito", 1)
+    mosquito.fly()
+
+    dragonfly = Dragonfly("Dragonfly", 1)
+    dragonfly.fly()
