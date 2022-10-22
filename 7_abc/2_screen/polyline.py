@@ -43,19 +43,6 @@ class Polyline:
             for p in self.points:
                 pygame.draw.circle(self.surface, color, p.int_pair(), width)
 
-    def get_point(self, points, alpha, deg=None):
-        if deg is None:
-            deg = len(points) - 1
-        if deg == 0:
-            return points[0]
-        return points[deg]*alpha + self.get_point(points, alpha, deg-1)*(1-alpha)
-
-    def get_points(self, base_points, count):
-        alpha = 1 / count
-        res = []
-        for i in range(count):
-            res.append(self.get_point(base_points, i * alpha))
-        return res
 
 class Knot(Polyline):
     def get_knot(self, points, count):
@@ -71,3 +58,16 @@ class Knot(Polyline):
             res.extend(self.get_points(ptn, count))
         return res
 
+    def get_point(self, points, alpha, deg=None):
+        if deg is None:
+            deg = len(points) - 1
+        if deg == 0:
+            return points[0]
+        return points[deg]*alpha + self.get_point(points, alpha, deg-1)*(1-alpha)
+
+    def get_points(self, base_points, count):
+        alpha = 1 / count
+        res = []
+        for i in range(count):
+            res.append(self.get_point(base_points, i * alpha))
+        return res

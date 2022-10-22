@@ -24,7 +24,7 @@ class Vec2d:
         return Vec2d(self.x * k, self.y * k)
 
     def __repr__(self):
-        return f"({self.x}, {self.y})"
+        return f"Vec2d({self.x}, {self.y})"
 
     def int_pair(self):
         """возвращает пару координат, определяющих вектор (координаты точки конца вектора),
