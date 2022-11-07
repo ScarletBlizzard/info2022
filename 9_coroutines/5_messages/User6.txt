@@ -1,15 +1,10 @@
-User6 message0
-User6 message1
-User6 message2
-User6 message3
-User6 message4
-User6 message5
-User6 message6
-User6 message7
-User6 message8
-User6 message9
-User6 message10
-User6 message11
-User6 message12
-User6 message13
-User6 message14
+message0
+message1
+message2
+message3
+message4
+message5
+message6
+message7
+message8
+message9

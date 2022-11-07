@@ -12,7 +12,7 @@ dp = Dispatcher(bot)
 
 @dp.message_handler(commands=['start', 'help'])
 async def send_welcome(message: types.Message):
-    await message.reply("Hi!\nI'm Image Bot!")
+    await message.reply("Hi!\nI'm Image Bot! Tell me what picture you want to see")
 
 @dp.message_handler()
 async def send_image(message: types.Message):
@@ -27,7 +27,7 @@ async def send_image(message: types.Message):
                     img_url = images[0]['src']
                     await bot.send_photo(message.chat.id, photo=img_url)
                 except IndexError:
-                    await message.reply('Нет картинок по этому запросу.')
+                    await message.reply('No images found')
                         
 
 if __name__ == '__main__':
