@@ -1,0 +1,13 @@
+add 15
+add 8
+add 5
+add 24
+add 19
+add 30
+add 26
+add 25
+add 28
+delete 24
+print
+dump
+exit
