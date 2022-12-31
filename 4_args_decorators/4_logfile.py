@@ -5,18 +5,18 @@ from functools import wraps
 def logfile(path):
     
     def actual_decorator(func):
-        file = open(path, 'w', encoding='utf8')
 
         @wraps(func)
         def wrapped(*args, **kwargs):
             start_time = time()
             result = func(*args, **kwargs)
             end_time = time()
-            file.write(str(start_time) + '\n')
-            file.write(', '.join(list(map(str, args)) + [f"{k}={v}" for k, v in kwargs.items()]) + '\n')
-            file.write((str(result) if result is not None else '-') + '\n')
-            file.write(str(end_time) + '\n')
-            file.write(str(end_time - start_time) + '\n')
+            with open(path, 'w', encoding='utf8') as file:
+                file.write(str(start_time) + '\n')
+                file.write(', '.join(list(map(str, args)) + [f"{k}={v}" for k, v in kwargs.items()]) + '\n')
+                file.write((str(result) if result is not None else '-') + '\n')
+                file.write(str(end_time) + '\n')
+                file.write(str(end_time - start_time) + '\n')
             return result
         
         return wrapped
@@ -36,4 +36,5 @@ def test_func2(*args):
 
 if __name__ == "__main__":
     test_func(1, 2, 3, a=4, b=5, c=6)
+    test_func(0, 0, 0, a=4, b=5, c=6)
     test_func2(1, 2, 3)
